@@ -1,0 +1,53 @@
+% function [glob] = initializeSedimentSupplyParamsIB(glob)
+% 
+%     % Set the starting sediment volume to the maximum volume - High to Low
+%     glob.flowSedVolStart = glob.flowSedVolMax;
+% 
+%     % Calculate the oscillation amplitude (remains the same)
+%     glob.flowSedVolOscillationAmplitude = (glob.flowSedVolMax - glob.flowSedVolMin);
+% 
+%     % Set the period to match the duration, as we want to decrease to zero over the full run
+%     % This will ensure that the sine wave starts at +1 and ends at 0
+%     glob.flowSedVolOscillationPeriod = glob.maxIts * 2;
+% 
+%     % Create a time vector
+%     t = 1 : glob.maxIts;
+% 
+%     % Create the flowSedVolHistory that decreases from max to min with no increase
+%     glob.flowSedVolHistory(t) = glob.flowSedVolStart * (sin((pi/2) - (t / glob.maxIts) * (pi/2)));
+% end
+
+% function [glob] = initializeSedimentSupplyParamsIB(glob)
+% 
+%     % Set the starting sediment volume to the minimum volume - Low to High
+%     glob.flowSedVolStart = glob.flowSedVolMin;
+% 
+%     % Calculate the oscillation amplitude (remains the same)
+%     glob.flowSedVolOscillationAmplitude = (glob.flowSedVolMax - glob.flowSedVolMin);
+% 
+%     % Create a time vector
+%     t = 1 : glob.maxIts;
+% 
+%     % Create the flowSedVolHistory that increases from min to max with no decrease
+%     % This time we use a sine function that starts at 0 and ends at +1
+%     glob.flowSedVolHistory(t) = glob.flowSedVolStart + ...
+%         (glob.flowSedVolOscillationAmplitude * sin((t / glob.maxIts) * (pi / 2)));
+% end
+
+function [glob] = initializeSedimentSupplyParamsIB(glob)
+
+    % Set the starting sediment volume to the minimum volume
+    glob.flowSedVolStart = glob.flowSedVolMin;
+
+    % Calculate the oscillation amplitude (remains the same)
+    glob.flowSedVolOscillationAmplitude = (glob.flowSedVolMax - glob.flowSedVolMin) / 2;
+
+    % Create a time vector
+    t = 1 : glob.maxIts;
+
+    % Create the flowSedVolHistory that increases from min to max and back to min
+    % Use a sine function that goes from 0 to pi to complete one cycle
+    glob.flowSedVolHistory(t) = glob.flowSedVolStart + ...
+        glob.flowSedVolOscillationAmplitude * (1 + sin((t / glob.maxIts) * pi));
+end
+
