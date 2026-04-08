@@ -1,0 +1,42 @@
+GoloFan			# model name
+modelOutput/		# output folder
+180			# 596
+0.001 			# Timestep in My, the interval between turbidity current events
+355 			# Grid x dimension (km)
+385 			# Grid y dimension (km)
+0.1 			# Grid cell x size in km
+0.1			# Grid cell y size in km
+modelInputParameters/initialTopographyFiles/GoloFanTopo_smooth3v5c.txt # GoloTopoS2_smooth2.txt	# Initial topography filename  GoloTopoS_smooth10
+50 # 147 #13		# Flow entry point x-coordinate 51 25 42
+180 # 186		# Flow entry point y-coordinate 210  190  130
+23000000  # 1500000 945007.17380548
+23000000
+500			# 25
+0.02			# 0.011823
+0.0			# Diffusion cooefficient, m2 per My KEEP AT ZERO
+9.81			# Acceleration due to gravity m squared per second 
+1.00			# Density (kg/m^3) of the ambient fluid
+1.3E-10;		# Erosion rate constant, value from original equation 1.3E-7
+0.004 			# Basal friction coefficient 0.004098
+0.00025			# d50 (m) median grain diameter (medium/fine sand) 0.00025
+2660.00			# Grain density in kg/m3 SILICICLASTIC quartz/feldspar here
+0.5 # 7.60114741033467			
+0.524744154753365			# 0.222387
+35 # 46.3962566265569
+0.1			# Flow COG proportion - what proportion of flow thickness to use to calculate flow center of gravity for velocity and gradient calculations
+0.01	# Volumetric sediment concentration Cv of a suspension Cv = VolSed./VolTot possible values 0.4, 0.07, 0.25  0.013359
+0.5
+1.00			# Proportion of the height of ponding topographic lows to fill when flow is trapped
+1.0
+0.1
+13			# Number of fractions in the depositional fraction profile
+0.001,0.001,0.002,0.002,0.002,0.004,0.004,0.004,0.004,0.008,0.008,0.008,0.016 # Proportion of flow volume to deposit e.g. 0.01, 0.025, 0.05
+0			# Animation flag 1 to record an animation during the model run, 0 to not
+150			# Start chron for the animation
+200			# End chron for the animation
+205,330,50,225		# x and y limits for the animation map view
+
+
+
+
+
